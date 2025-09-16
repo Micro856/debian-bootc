@@ -65,7 +65,7 @@ RUN echo "$(basename "$(find /usr/lib/modules -maxdepth 1 -type d | grep -v -E "
     rm kernel_version.txt
 
 # If you want a desktop :)
-RUN apt install -y network-manager gnome-initial-setup gnome-shell gnome-control-center gdm3 nautilus sushi gnome-backgrounds libgnome-desktop-3-20 libgnome-desktop-4-2 gnome-menus gnome-session gnome-color-manager gnome-keyring gnome-user-share grilo-plugins-0.3 gvfs malcontent orca tecla xdg-desktop-portal-gnome xdg-user-dirs-gtk
+RUN apt install -y network-manager gnome-initial-setup gnome-shell gnome-control-center gdm3 nautilus gnome-sushi gnome-backgrounds libgnome-desktop-3-20 libgnome-desktop-4-2 gnome-menus gnome-session gnome-color-manager gnome-keyring gnome-user-share grilo-plugins-0.3 gvfs malcontent orca tecla xdg-desktop-portal-gnome xdg-user-dirs-gtk
 
 # Alter root file structure a bit for ostree
 RUN mkdir -p /boot /sysroot /var/home && \
