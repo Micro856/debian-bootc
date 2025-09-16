@@ -13,7 +13,6 @@ RUN --mount=type=tmpfs,dst=/tmp cd /tmp && \
     git clone https://github.com/bootc-dev/bootc.git bootc && \
     cd bootc && \
     git fetch --all && \
-    git switch origin/composefs-backend -d && \
     /root/.cargo/bin/cargo build --release --bins && \
     install -Dpm0755 -t /usr/bin ./target/release/bootc && \
     install -Dpm0755 -t /usr/bin ./target/release/system-reinstall-bootc && \
@@ -79,6 +78,9 @@ RUN mkdir -p /boot /sysroot /var/home && \
 # Setup a temporary root passwd (changeme) for dev purposes
 # TODO: Replace this for a more robust option when in prod
 RUN usermod -p '$6$AJv9RHlhEXO6Gpul$5fvVTZXeM0vC03xckTIjY8rdCofnkKSzvF5vEzXDKAby5p3qaOGTHDypVVxKsCE3CbZz7C3NXnbpITrEUvN/Y/' root
+
+RUN systemctl enable gdm && \
+    systemctl enable NetworkManager
 
 # Necessary labels
 LABEL containers.bootc 1
